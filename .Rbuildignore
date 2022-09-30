@@ -2,3 +2,5 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^TransLasso-examples\.R$
+^\.github$
+^codecov\.yml$
