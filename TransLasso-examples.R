@@ -21,12 +21,12 @@ Coef.gen<- function(s, h,q=30, size.A0, M, sig.beta,sig.delta1, sig.delta2, p, e
       }
     }
   }
-  
+
   return(list(W=W, beta0=beta0))
 }
 
 
-source("TransLasso-functions.R")
+source("R/TransLasso.R")
 set.seed(123)
 p = 500
 s = 16
@@ -41,10 +41,10 @@ Sig.X <- diag(1, p)
 Niter = 200
 l1=T
 
-size.A0 = 12 
+size.A0 = 12
 h=6
 A0 = 1:size.A0
-beta0<- 
+beta0<-
 coef.all <-Coef.gen( s, h = h, q = 2*s, size.A0 = size.A0,  M = M,   sig.beta = sig.beta,
              sig.delta1 = sig.beta, sig.delta2 = sig.beta+0.2, p = p, exact=F)
 B <- cbind(coef.all$beta0, coef.all$W)
@@ -81,27 +81,31 @@ if(size.A0 > 0 & size.A0< M){ #Rank.re characterizes the performance of the spar
 beta.prop <- (prop.re1$beta.hat + prop.re2$beta.hat) / 2
 mse.vec[3] = mse.fun(beta.prop, beta0)$est.err
 
-######A method for comparison: it has the same pipeline of the Trans-Lasso 
+######A method for comparison: it has the same pipeline of the Trans-Lasso
 ###but with sparsity index R_k=\|w^{(k)}-\beta\|_1 and a naive aggregation (empirical risk minimization)
+n0 <- 150
+M = 20
+n.vec <- c(n0, rep(100, M))
 prop.sp.re1 <- Trans.lasso.sp(X, y, n.vec, I.til = 1:50, l1 = l1)
 prop.sp.re2 <- Trans.lasso.sp(X, y, n.vec, I.til = 101:n.vec[1], l1=l1)
 if(size.A0 > 0 & size.A0< M){
   Rank.re.sp <- (sum(prop.sp.re1$rank.pi[1:size.A0]<=size.A0) +
-                        sum(prop.sp.re2$rank.pi[1:size.A0]<=size.A0))/2/size.A0
+                   sum(prop.sp.re2$rank.pi[1:size.A0]<=size.A0))/2/size.A0
 }else{ Rank.re.sp <-1 }
 beta.sp <- (prop.sp.re1$beta.sp + prop.sp.re2$beta.sp) / 2
-mse.vec[4] = mse.fun(beta.sp, beta0)$est.err    
+mse.vec[4] = mse.fun(beta.sp, beta0)$est.err
 
-######another method for comparison: it is the same as Trans-Lasso except 
+######another method for comparison: it is the same as Trans-Lasso except
 ##that the bias correction step (step 2 of Oracle Trans-Lasso) is omitted
 beta.pool<-(prop.re1$beta.pool+prop.re2$beta.pool)/2
-mse.vec[5] = mse.fun(beta.pool, beta0)$est.err  
+mse.vec[5] = mse.fun(beta.pool, beta0)$est.err
 #####naive translasso: simply assumes A0=1:K
 beta.all <- las.kA(X, y, A0 = 1:M, n.vec = n.vec, l1=l1)$beta.kA#naive transLasso
 mse.vec[6] = mse.fun(as.numeric(beta.all), beta0)$est.err
 
-cat(mse.vec, '\n')
-cat(Rank.re, Rank.re.sp, '\n')
+dput(mse.vec)
+dput(Rank.re)
+
 
 
 

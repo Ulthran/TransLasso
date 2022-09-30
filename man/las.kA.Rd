@@ -7,14 +7,18 @@
 las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 }
 \arguments{
-\item{lam.const}{(default: NULL)}
+\item{X}{PLACEHOLDER}
 
-\item{l1}{(default: T)}
+\item{y}{PLACEHOLDER}
+
+\item{A0}{PLACEHOLDER}
+
+\item{n.vec}{PLACEHOLDER}
+
+\item{lam.const}{PLACEHOLDER (default: NULL)}
+
+\item{l1}{PLACEHOLDER (default: T)}
 }
 \description{
 Trans-Lasso Oracle
-}
-\examples{
-... show how to set vars
-las.kA(X, y, A0, n.vec)
 }

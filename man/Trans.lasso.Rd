@@ -7,15 +7,19 @@
 Trans.lasso(X, y, n.vec, I.til, l1 = T)
 }
 \arguments{
-\item{l1}{(default: T)}
+\item{X}{PLACEHOLDER}
+
+\item{y}{PLACEHOLDER}
+
+\item{n.vec}{PLACEHOLDER}
+
+\item{I.til}{PLACEHOLDER}
+
+\item{l1}{PLACEHOLDER (default: T)}
 }
 \value{
 A something
 }
 \description{
 Trans Lasso main method
-}
-\examples{
-... how to setup vars
-Trans.lasso(X, y, n.vec, I.til)
 }

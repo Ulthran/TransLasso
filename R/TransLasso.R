@@ -2,15 +2,11 @@ library(glmnet)
 
 #' agg.fun
 #'
-#' @param B
-#' @param X.test
-#' @param y.test
-#' @param total.step  (default: 10)
-#' @param selection  (default: F)
-#'
-#' @examples
-#' ... show how to create vars
-#' agg.fun(B, X.test, y.test)
+#' @param B PLACEHOLDER
+#' @param X.test PLACEHOLDER
+#' @param y.test PLACEHOLDER
+#' @param total.step PLACEHOLDER (default: 10)
+#' @param selection PLACEHOLDER (default: F)
 agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
   if(sum(B==0)==ncol(B)*nrow(B)){
     return(rep(0,nrow(B)))
@@ -45,16 +41,17 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 
 #' Trans-Lasso Oracle
 #'
-#' @param X
-#' @param y
-#' @param A0
-#' @param n.vec
-#' @param lam.const  (default: NULL)
-#' @param l1  (default: T)
+#' @param X PLACEHOLDER
+#' @param y PLACEHOLDER
+#' @param A0 PLACEHOLDER
+#' @param n.vec PLACEHOLDER
+#' @param lam.const PLACEHOLDER (default: NULL)
+#' @param l1 PLACEHOLDER (default: T)
 #'
-#' @examples
-#' ... show how to set vars
-#' las.kA(X, y, A0, n.vec)
+#' @importFrom stats predict
+#' @importFrom glmnet glmnet
+#' @importFrom glmnet cv.glmnet
+#' @importFrom lassoshooting lassoshooting
 las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
   p<-ncol(X)
   size.A0<- length(A0)
@@ -99,18 +96,14 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
 
 #' Trans Lasso main method
 #'
-#' @param X
-#' @param y
-#' @param n.vec
-#' @param I.til
-#' @param l1  (default: T)
+#' @param X PLACEHOLDER
+#' @param y PLACEHOLDER
+#' @param n.vec PLACEHOLDER
+#' @param I.til PLACEHOLDER
+#' @param l1 PLACEHOLDER (default: T)
 #'
 #' @return A something
 #' @export
-#'
-#' @examples
-#' ... how to setup vars
-#' Trans.lasso(X, y, n.vec, I.til)
 Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   M= length(n.vec)-1
   #step 1
@@ -162,8 +155,15 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
 }
 
 
-#A method for comparison: Trans-Lasso(l1). It has the same pipeline of the Trans-Lasso
-###but with sparsity index R_k=\|w^{(k)}-\beta\|_1 and a naive aggregation (empirical risk minimization)
+#' A method for comparison: Trans-Lasso(l1). It has the same pipeline of Trans.lasso() but with sparsity index R_k=|w^{(k)}-β|_1 and a naive aggregation (empirical risk minimization)
+#'
+#' @param X PLACEHOLDER
+#' @param y PLACEHOLDER
+#' @param n.vec PLACEHOLDER
+#' @param I.til PLACEHOLDER
+#' @param l1 PLACEHOLDER (default: T)
+#'
+#' @importFrom glmnet glmnet
 Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
   M= length(n.vec)-1
   #step 1
@@ -205,7 +205,11 @@ Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
   return(list(beta.sp=agg.re$beta, theta.sp=agg.re$theta, rank.pi=rank(Rhat[-1])))
 }
 
-#computing the MSE
+#' Computing the MSE
+#'
+#' @param beta PLACEHOLDER
+#' @param est PLACEHOLDER
+#' @param X.test PLACEHOLDER (default: NULL)
 mse.fun<- function(beta,est, X.test=NULL){
   pred.err<-NA
   est.err<- sum((beta-est)^2)

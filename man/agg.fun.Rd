@@ -7,14 +7,16 @@
 agg.fun(B, X.test, y.test, total.step = 10, selection = F)
 }
 \arguments{
-\item{total.step}{(default: 10)}
+\item{B}{PLACEHOLDER}
 
-\item{selection}{(default: F)}
+\item{X.test}{PLACEHOLDER}
+
+\item{y.test}{PLACEHOLDER}
+
+\item{total.step}{PLACEHOLDER (default: 10)}
+
+\item{selection}{PLACEHOLDER (default: F)}
 }
 \description{
 agg.fun
-}
-\examples{
-... show how to create vars
-agg.fun(B, X.test, y.test)
 }
