@@ -4,3 +4,6 @@
 ^TransLasso-examples\.R$
 ^\.github$
 ^codecov\.yml$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
