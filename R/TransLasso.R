@@ -1,5 +1,16 @@
-
 library(glmnet)
+
+#' agg.fun
+#'
+#' @param B
+#' @param X.test
+#' @param y.test
+#' @param total.step  (default: 10)
+#' @param selection  (default: F)
+#'
+#' @examples
+#' ... show how to create vars
+#' agg.fun(B, X.test, y.test)
 agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
   if(sum(B==0)==ncol(B)*nrow(B)){
     return(rep(0,nrow(B)))
@@ -32,7 +43,18 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 }
 
 
-###oracle Trans-Lasso
+#' Trans-Lasso Oracle
+#'
+#' @param X
+#' @param y
+#' @param A0
+#' @param n.vec
+#' @param lam.const  (default: NULL)
+#' @param l1  (default: T)
+#'
+#' @examples
+#' ... show how to set vars
+#' las.kA(X, y, A0, n.vec)
 las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
   p<-ncol(X)
   size.A0<- length(A0)
@@ -47,7 +69,7 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
       for(k in 1:size.A0){
         ind.k<- ind.set(n.vec,k+1)
         lam.k <- sqrt(mean(y[ind.1]^2)/n.vec[1]+mean(y[ind.k]^2)/n.vec[k]) * sqrt(2*log(p))
-        delta.hat.k<-lassoshooting(XtX=Sig.hat, 
+        delta.hat.k<-lassoshooting(XtX=Sig.hat,
                                    Xty=t(X[ind.k,])%*%y[ind.k]/n.vec[k+1]-t(X[1:n.vec[1],])%*%y[1:n.vec[1]]/n.vec[1],
                                    lambda=lam.k)$coef
         y.A<-c(y.A, y[ind.k]-X[ind.k,]%*%delta.hat.k)
@@ -72,10 +94,23 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
     w.kA<-NA
   }
   list(beta.kA=as.numeric(beta.kA),w.kA=w.kA, lam.const=lam.const)
-  
+
 }
 
-#Trans Lasso method
+#' Trans Lasso main method
+#'
+#' @param X
+#' @param y
+#' @param n.vec
+#' @param I.til
+#' @param l1  (default: T)
+#'
+#' @return A something
+#' @export
+#'
+#' @examples
+#' ... how to setup vars
+#' Trans.lasso(X, y, n.vec, I.til)
 Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   M= length(n.vec)-1
   #step 1
@@ -104,7 +139,7 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   k0=length(Tset)
   Tset<- unique(Tset)
   #cat(length(Tset),'\n')
-  
+
   beta.T<-list()
   init.re<-las.kA(X=X, y=y, A0=NULL, n.vec=n.vec, l1=l1)
   beta.T[[1]] <- init.re$beta.kA
@@ -121,13 +156,13 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   beta.pool.T<-beta.pool.T[!duplicated((beta.pool.T))]
   beta.pool.T<- as.matrix(as.data.frame(beta.pool.T))
   agg.re2<-agg.fun(B=beta.pool.T, X.test=X0.til, y.test=y0.til)
-  
+
   return(list(beta.hat=agg.re1$beta, theta.hat=agg.re1$theta, rank.pi=rank(Rhat[-1]),
               beta.pool=agg.re2$beta, theta.pool=agg.re2$theta))
 }
 
 
-#A method for comparison: Trans-Lasso(l1). It has the same pipeline of the Trans-Lasso 
+#A method for comparison: Trans-Lasso(l1). It has the same pipeline of the Trans-Lasso
 ###but with sparsity index R_k=\|w^{(k)}-\beta\|_1 and a naive aggregation (empirical risk minimization)
 Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
   M= length(n.vec)-1
@@ -157,7 +192,7 @@ Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
   k0=length(Tset)
   Tset<- unique(Tset)
   # cat(length(Tset),'\n')
-  
+
   beta.T<-list()
   beta.T[[1]] <- init.re$beta.kA
   for(kk in 1:length(Tset)){#use pi.hat as selection rule
@@ -174,7 +209,7 @@ Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
 mse.fun<- function(beta,est, X.test=NULL){
   pred.err<-NA
   est.err<- sum((beta-est)^2)
-  
+
   if(!is.null(X.test)){
     pred.err<-  mean((X.test%*%(beta-est))^2)
   }
