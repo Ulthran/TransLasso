@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/Ulthran/TransLasso/workflows/R-CMD-check/badge.svg)](https://github.com/Ulthran/TransLasso/actions)
 [![Codecov test coverage](https://codecov.io/gh/Ulthran/TransLasso/branch/main/graph/badge.svg)](https://app.codecov.io/gh/Ulthran/TransLasso?branch=main)
+[![pkgdown](https://github.com/Ulthran/TransLasso/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/Ulthran/TransLasso/actions/workflows/pkgdown.yaml)
 <!-- badges: end -->
 
 Rcode for the TransLasso algorithm.
