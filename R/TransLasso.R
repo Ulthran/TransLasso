@@ -178,7 +178,7 @@ print.translasso <- function(obj, ...) {
 #'
 #' @export
 plot.translasso <- function(obj, ...) {
-  do.something(obj)
+  print("This should be a plot")
 }
 
 
