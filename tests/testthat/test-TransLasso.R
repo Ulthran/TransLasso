@@ -106,4 +106,10 @@ test_that("the whole pipeline works", {
                          0.379109688445853, 0.487379276447367))
   expect_equal(Rank.re, 1)
   expect_equal(Rank.re.sp, 1)
+
+  print(beta.kA)
+  print(beta.prop)
+  print(beta.sp)
+  #print(prop.re1)
+  #print(prop.sp.re1)
 })

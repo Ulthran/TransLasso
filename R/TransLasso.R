@@ -41,17 +41,21 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 
 #' Trans-Lasso Oracle
 #'
-#' @param X PLACEHOLDER
-#' @param y PLACEHOLDER
-#' @param A0 PLACEHOLDER
+#' @param X is the training data
+#' @param y is the target value set
+#' @param A0 is the informative set
 #' @param n.vec PLACEHOLDER
-#' @param lam.const PLACEHOLDER (default: NULL)
-#' @param l1 PLACEHOLDER (default: T)
+#' @param lam.const is a tuning parameter (default: NULL)
+#' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
+#'
+#' @return
 #'
 #' @importFrom stats predict
 #' @importFrom glmnet glmnet
 #' @importFrom glmnet cv.glmnet
 #' @importFrom lassoshooting lassoshooting
+#'
+#' @export
 las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
   p<-ncol(X)
   size.A0<- length(A0)
@@ -150,8 +154,31 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   beta.pool.T<- as.matrix(as.data.frame(beta.pool.T))
   agg.re2<-agg.fun(B=beta.pool.T, X.test=X0.til, y.test=y0.til)
 
-  return(list(beta.hat=agg.re1$beta, theta.hat=agg.re1$theta, rank.pi=rank(Rhat[-1]),
-              beta.pool=agg.re2$beta, theta.pool=agg.re2$theta))
+  obj <- list(beta.hat=agg.re1$beta, theta.hat=agg.re1$theta, rank.pi=rank(Rhat[-1]),
+              beta.pool=agg.re2$beta, theta.pool=agg.re2$theta)
+  class(obj) <- "translasso"
+
+  return(obj)
+}
+
+#' Print translasso object
+#'
+#' @param obj is the translasso object to be printed
+#' @param ... are any extra parameters
+#'
+#' @export
+print.translasso <- function(obj, ...) {
+  print(paste(obj, collapse = "\n"))
+}
+
+#' Plot translasso object
+#'
+#' @param obj is the translasso object to be plotted
+#' @param ... are any extra parameters
+#'
+#' @export
+plot.translasso <- function(obj, ...) {
+  do.something(obj)
 }
 
 

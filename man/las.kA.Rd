@@ -7,17 +7,20 @@
 las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 }
 \arguments{
-\item{X}{PLACEHOLDER}
+\item{X}{is the training data}
 
-\item{y}{PLACEHOLDER}
+\item{y}{is the target value set}
 
-\item{A0}{PLACEHOLDER}
+\item{A0}{is the informative set}
 
 \item{n.vec}{PLACEHOLDER}
 
 \item{lam.const}{PLACEHOLDER (default: NULL)}
 
-\item{l1}{PLACEHOLDER (default: T)}
+\item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (default: T)}
+}
+\value{
+
 }
 \description{
 Trans-Lasso Oracle
