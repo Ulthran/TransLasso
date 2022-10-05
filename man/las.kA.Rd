@@ -11,13 +11,13 @@ las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 
 \item{y}{is the target value set}
 
-\item{A0}{is the informative set}
+\item{A0}{is the informative auxiliary set}
 
 \item{n.vec}{PLACEHOLDER}
 
-\item{lam.const}{PLACEHOLDER (default: NULL)}
+\item{lam.const}{is a tuning parameter (default: NULL)}
 
-\item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (default: T)}
+\item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)}
 }
 \value{
 

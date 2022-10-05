@@ -43,7 +43,7 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 #'
 #' @param X is the training data
 #' @param y is the target value set
-#' @param A0 is the informative set
+#' @param A0 is the informative auxiliary set
 #' @param n.vec PLACEHOLDER
 #' @param lam.const is a tuning parameter (default: NULL)
 #' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
