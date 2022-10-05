@@ -4,10 +4,10 @@
 \alias{plot.translasso}
 \title{Plot translasso object}
 \usage{
-\method{plot}{translasso}(obj, ...)
+\method{plot}{translasso}(x, ...)
 }
 \arguments{
-\item{obj}{is the translasso object to be plotted}
+\item{x}{is the translasso object to be plotted}
 
 \item{...}{are any extra parameters}
 }

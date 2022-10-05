@@ -4,10 +4,10 @@
 \alias{print.translasso}
 \title{Print translasso object}
 \usage{
-\method{print}{translasso}(obj, ...)
+\method{print}{translasso}(x, ...)
 }
 \arguments{
-\item{obj}{is the translasso object to be printed}
+\item{x}{is the translasso object to be printed}
 
 \item{...}{are any extra parameters}
 }

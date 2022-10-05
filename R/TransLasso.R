@@ -48,7 +48,7 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 #' @param lam.const is a tuning parameter (default: NULL)
 #' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
 #'
-#' @return
+#' @return A SOMETHING
 #'
 #' @importFrom stats predict
 #' @importFrom glmnet glmnet
@@ -163,21 +163,21 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
 
 #' Print translasso object
 #'
-#' @param obj is the translasso object to be printed
+#' @param x is the translasso object to be printed
 #' @param ... are any extra parameters
 #'
 #' @export
-print.translasso <- function(obj, ...) {
-  print(paste(obj, collapse = "\n"))
+print.translasso <- function(x, ...) {
+  print(paste(x, collapse = "\n"))
 }
 
 #' Plot translasso object
 #'
-#' @param obj is the translasso object to be plotted
+#' @param x is the translasso object to be plotted
 #' @param ... are any extra parameters
 #'
 #' @export
-plot.translasso <- function(obj, ...) {
+plot.translasso <- function(x, ...) {
   print("This should be a plot")
 }
 
