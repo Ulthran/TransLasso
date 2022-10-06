@@ -39,7 +39,7 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 }
 
 
-#' Trans-Lasso Oracle
+#' Trans-Lasso Oracle algorithm method
 #'
 #' @param X is the training data
 #' @param y is the target value set
@@ -98,7 +98,7 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
 
 }
 
-#' Trans Lasso main method
+#' Trans Lasso algorithm method
 #'
 #' @param X PLACEHOLDER
 #' @param y PLACEHOLDER

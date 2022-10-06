@@ -2,7 +2,7 @@
 % Please edit documentation in R/TransLasso.R
 \name{las.kA}
 \alias{las.kA}
-\title{Trans-Lasso Oracle}
+\title{Trans-Lasso Oracle algorithm method}
 \usage{
 las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 }
@@ -23,5 +23,5 @@ las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 A SOMETHING
 }
 \description{
-Trans-Lasso Oracle
+Trans-Lasso Oracle algorithm method
 }

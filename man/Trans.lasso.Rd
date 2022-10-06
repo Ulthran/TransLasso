@@ -2,7 +2,7 @@
 % Please edit documentation in R/TransLasso.R
 \name{Trans.lasso}
 \alias{Trans.lasso}
-\title{Trans Lasso main method}
+\title{Trans Lasso algorithm method}
 \usage{
 Trans.lasso(X, y, n.vec, I.til, l1 = T)
 }
@@ -21,5 +21,5 @@ Trans.lasso(X, y, n.vec, I.til, l1 = T)
 A something
 }
 \description{
-Trans Lasso main method
+Trans Lasso algorithm method
 }
