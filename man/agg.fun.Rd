@@ -17,6 +17,9 @@ agg.fun(B, X.test, y.test, total.step = 10, selection = F)
 
 \item{selection}{PLACEHOLDER (default: F)}
 }
+\value{
+is a named list containing theta, beta, and beta.ew
+}
 \description{
 agg.fun
 }

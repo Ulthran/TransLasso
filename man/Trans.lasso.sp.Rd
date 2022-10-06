@@ -7,15 +7,18 @@
 Trans.lasso.sp(X, y, n.vec, I.til, l1 = T)
 }
 \arguments{
-\item{X}{PLACEHOLDER}
+\item{X}{is the training data set}
 
-\item{y}{PLACEHOLDER}
+\item{y}{is the target value set}
 
 \item{n.vec}{PLACEHOLDER}
 
-\item{I.til}{PLACEHOLDER}
+\item{I.til}{is a subset of n.vec containing roughly half its elements}
 
-\item{l1}{PLACEHOLDER (default: T)}
+\item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)}
+}
+\value{
+is a named list containing beta.sp, theta.sp, and rank.pi
 }
 \description{
 A method for comparison: Trans-Lasso(l1). It has the same pipeline of Trans.lasso() but with sparsity index R_k=|w^{(k)}-β|_1 and a naive aggregation (empirical risk minimization)

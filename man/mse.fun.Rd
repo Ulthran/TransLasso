@@ -2,17 +2,20 @@
 % Please edit documentation in R/TransLasso.R
 \name{mse.fun}
 \alias{mse.fun}
-\title{Computing the MSE}
+\title{Computing the mean squared error}
 \usage{
 mse.fun(beta, est, X.test = NULL)
 }
 \arguments{
-\item{beta}{PLACEHOLDER}
+\item{beta}{is the vector to compare against}
 
-\item{est}{PLACEHOLDER}
+\item{est}{is the estimate vector}
 
-\item{X.test}{PLACEHOLDER (default: NULL)}
+\item{X.test}{is the test training data set (default: NULL)}
+}
+\value{
+is a named list containing est.err and pred.err
 }
 \description{
-Computing the MSE
+Computing the mean squared error
 }

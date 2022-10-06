@@ -7,6 +7,8 @@ library(glmnet)
 #' @param y.test PLACEHOLDER
 #' @param total.step PLACEHOLDER (default: 10)
 #' @param selection PLACEHOLDER (default: F)
+#'
+#' @return is a named list containing theta, beta, and beta.ew
 agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
   if(sum(B==0)==ncol(B)*nrow(B)){
     return(rep(0,nrow(B)))
@@ -41,14 +43,14 @@ agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
 
 #' Trans-Lasso Oracle algorithm method
 #'
-#' @param X is the training data
+#' @param X is the training data set
 #' @param y is the target value set
 #' @param A0 is the informative auxiliary set
 #' @param n.vec PLACEHOLDER
 #' @param lam.const is a tuning parameter (default: NULL)
 #' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
 #'
-#' @return A SOMETHING
+#' @return a named list containing beta.kA, w.kA, and lam.const
 #'
 #' @importFrom stats predict
 #' @importFrom glmnet glmnet
@@ -100,13 +102,13 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
 
 #' Trans Lasso algorithm method
 #'
-#' @param X PLACEHOLDER
-#' @param y PLACEHOLDER
+#' @param X is the training data set
+#' @param y is the target value set
 #' @param n.vec PLACEHOLDER
-#' @param I.til PLACEHOLDER
-#' @param l1 PLACEHOLDER (default: T)
+#' @param I.til is a subset of n.vec containing roughly half its elements
+#' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
 #'
-#' @return A something
+#' @return A named list containing beta.hat, theta.hat, rank.pi, beta.pool, and theta.pool
 #' @export
 Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   M= length(n.vec)-1
@@ -135,7 +137,6 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
   }
   k0=length(Tset)
   Tset<- unique(Tset)
-  #cat(length(Tset),'\n')
 
   beta.T<-list()
   init.re<-las.kA(X=X, y=y, A0=NULL, n.vec=n.vec, l1=l1)
@@ -184,11 +185,14 @@ plot.translasso <- function(x, ...) {
 
 #' A method for comparison: Trans-Lasso(l1). It has the same pipeline of Trans.lasso() but with sparsity index R_k=|w^{(k)}-β|_1 and a naive aggregation (empirical risk minimization)
 #'
-#' @param X PLACEHOLDER
-#' @param y PLACEHOLDER
+#' @param X is the training data set
+#' @param y is the target value set
 #' @param n.vec PLACEHOLDER
-#' @param I.til PLACEHOLDER
-#' @param l1 PLACEHOLDER (default: T)
+#' @param I.til is a subset of n.vec containing roughly half its elements
+#' @param l1 is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)
+#'
+#' @return is a named list containing beta.sp, theta.sp, and rank.pi
+#' @export
 #'
 #' @importFrom glmnet glmnet
 Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
@@ -232,11 +236,14 @@ Trans.lasso.sp <- function(X, y, n.vec, I.til, l1=T){
   return(list(beta.sp=agg.re$beta, theta.sp=agg.re$theta, rank.pi=rank(Rhat[-1])))
 }
 
-#' Computing the MSE
+#' Computing the mean squared error
 #'
-#' @param beta PLACEHOLDER
-#' @param est PLACEHOLDER
-#' @param X.test PLACEHOLDER (default: NULL)
+#' @param beta is the vector to compare against
+#' @param est is the estimate vector
+#' @param X.test is the test training data set (default: NULL)
+#'
+#' @return is a named list containing est.err and pred.err
+#' @export
 mse.fun<- function(beta,est, X.test=NULL){
   pred.err<-NA
   est.err<- sum((beta-est)^2)
@@ -258,6 +265,7 @@ ind.set<- function(n.vec, k.vec){
   }
   ind.re
 }
+
 rep.col<-function(x,n){
   matrix(rep(x,each=n), ncol=n, byrow=TRUE)
 }

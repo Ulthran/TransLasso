@@ -7,18 +7,18 @@
 Trans.lasso(X, y, n.vec, I.til, l1 = T)
 }
 \arguments{
-\item{X}{PLACEHOLDER}
+\item{X}{is the training data set}
 
-\item{y}{PLACEHOLDER}
+\item{y}{is the target value set}
 
 \item{n.vec}{PLACEHOLDER}
 
-\item{I.til}{PLACEHOLDER}
+\item{I.til}{is a subset of n.vec containing roughly half its elements}
 
-\item{l1}{PLACEHOLDER (default: T)}
+\item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)}
 }
 \value{
-A something
+A named list containing beta.hat, theta.hat, rank.pi, beta.pool, and theta.pool
 }
 \description{
 Trans Lasso algorithm method

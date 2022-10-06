@@ -7,7 +7,7 @@
 las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 }
 \arguments{
-\item{X}{is the training data}
+\item{X}{is the training data set}
 
 \item{y}{is the target value set}
 
@@ -20,7 +20,7 @@ las.kA(X, y, A0, n.vec, lam.const = NULL, l1 = T)
 \item{l1}{is a boolean indicating l1-sparse characterization of contrast vectors (T) or l0 (F) (default: T)}
 }
 \value{
-A SOMETHING
+a named list containing beta.kA, w.kA, and lam.const
 }
 \description{
 Trans-Lasso Oracle algorithm method
