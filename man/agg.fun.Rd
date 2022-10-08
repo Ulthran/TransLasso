@@ -18,7 +18,11 @@ agg.fun(B, X.test, y.test, total.step = 10, selection = F)
 \item{selection}{PLACEHOLDER (default: F)}
 }
 \value{
-is a named list containing theta, beta, and beta.ew
+is a named list containing \itemize{
+\item \code{theta} is SOMETHING
+\item \code{beta} is SOMETHING
+\item \code{beta.ew} is SOMETHING
+}
 }
 \description{
 agg.fun

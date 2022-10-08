@@ -2,6 +2,7 @@
 
 S3method(plot,translasso)
 S3method(print,translasso)
+S3method(summary,translasso)
 export(Trans.lasso)
 export(Trans.lasso.sp)
 export(las.kA)

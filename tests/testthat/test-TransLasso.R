@@ -76,10 +76,6 @@ test_that("oracle translasso alogrithm works", {
 
   expect_lt(mse.val, 0.5)
 
-  #print("OTL")
-  #print(otl)
-  #print("SP")
-  #print(prop.sp.re1)
   expect_lt(max(abs(otl$beta.kA - prop.sp.re1$beta.sp)), 0.2)
   expect_lt(max(abs(otl$beta.kA - prop.sp.re2$beta.sp)), 0.2)
 
@@ -93,6 +89,7 @@ test_that("translasso algorithm works", {
 
   prop.re1 <- Trans.lasso(X, y, n.vec, I.til = 1:50, l1 = l1)
   prop.re2 <- Trans.lasso(X, y, n.vec, I.til = 101:n.vec[1], l1=l1)
+
   if(size.A0 > 0 & size.A0< M){ # Rank.re characterizes the performance of the sparsity index Rk
     Rank.re<- (sum(prop.re1$rank.pi[1:size.A0]<=size.A0) +
                  sum(prop.re2$rank.pi[1:size.A0]<=size.A0))/2/size.A0
@@ -114,8 +111,6 @@ test_that("translasso algorithm works", {
   mse.val <- mse.fun(as.numeric(otl$beta.kA), beta0)$est.err
 
   expect_lt(mse.val, 0.5)
-
-
 
   rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, envir = .GlobalEnv)
 })

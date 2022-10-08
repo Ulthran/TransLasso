@@ -8,7 +8,11 @@ library(glmnet)
 #' @param total.step PLACEHOLDER (default: 10)
 #' @param selection PLACEHOLDER (default: F)
 #'
-#' @return is a named list containing theta, beta, and beta.ew
+#' @return is a named list containing \itemize{
+#' \item \code{theta} is SOMETHING
+#' \item \code{beta} is SOMETHING
+#' \item \code{beta.ew} is SOMETHING
+#' }
 agg.fun<- function(B, X.test,y.test, total.step=10, selection=F){
   if(sum(B==0)==ncol(B)*nrow(B)){
     return(rep(0,nrow(B)))
@@ -96,8 +100,8 @@ las.kA<-function(X, y, A0, n.vec, lam.const=NULL, l1=T){
     beta.kA <- predict(cv.init, s='lambda.min', type='coefficients')[-1]
     w.kA<-NA
   }
-  list(beta.kA=as.numeric(beta.kA),w.kA=w.kA, lam.const=lam.const)
 
+  list(beta.kA=as.numeric(beta.kA),w.kA=w.kA, lam.const=lam.const)
 }
 
 #' Trans Lasso algorithm method
@@ -170,6 +174,16 @@ Trans.lasso <- function(X, y, n.vec, I.til, l1=T){
 #' @export
 print.translasso <- function(x, ...) {
   print(paste(x, collapse = "\n"))
+}
+
+#' Summarize translasso object
+#'
+#' @param x is the translasso object to be summarized
+#' @param ... are any extra parameters
+#'
+#' @export
+summary.translasso <- function(x, ...) {
+  print("Summary of obj")
 }
 
 #' Plot translasso object
