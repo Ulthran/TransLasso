@@ -182,7 +182,7 @@ print.translasso <- function(x, ...) {
 #' @param ... are any extra parameters
 #'
 #' @export
-summary.translasso <- function(x, ...) {
+summary.translasso <- function(object, ...) {
   print("Summary of obj")
 }
 

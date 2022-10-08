@@ -4,12 +4,12 @@
 \alias{summary.translasso}
 \title{Summarize translasso object}
 \usage{
-\method{summary}{translasso}(x, ...)
+\method{summary}{translasso}(object, ...)
 }
 \arguments{
-\item{x}{is the translasso object to be summarized}
-
 \item{...}{are any extra parameters}
+
+\item{x}{is the translasso object to be summarized}
 }
 \description{
 Summarize translasso object
