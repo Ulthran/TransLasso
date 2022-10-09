@@ -178,7 +178,7 @@ print.translasso <- function(x, ...) {
 
 #' Summarize translasso object
 #'
-#' @param x is the translasso object to be summarized
+#' @param object is the translasso object to be summarized
 #' @param ... are any extra parameters
 #'
 #' @export

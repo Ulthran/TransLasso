@@ -7,9 +7,9 @@
 \method{summary}{translasso}(object, ...)
 }
 \arguments{
-\item{...}{are any extra parameters}
+\item{object}{is the translasso object to be summarized}
 
-\item{x}{is the translasso object to be summarized}
+\item{...}{are any extra parameters}
 }
 \description{
 Summarize translasso object
