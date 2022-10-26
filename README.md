@@ -17,14 +17,6 @@ The development version can be installed from GitHub with:
 devtools::install_github("Ulthran/TransLasso")
 ```
 
-## Usage
-
-```r
-COMMON USAGE EXAMPLES
-```
-
-See the documentation for a full list of functions.
-
 ## Documentation
 
 See the [GitHub Pages site](https://ulthran.github.io/TransLasso/) for function documentation. Please cite [Transfer Learning for High-dimensional Linear Regression](https://arxiv.org/abs/2006.10593) by Sai Li, T. Tony Cai, & Hongzhe Li.

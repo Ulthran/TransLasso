@@ -4,8 +4,8 @@ Version: 0.0.0.9000
 Authors@R: 
     c(
       person("Sai", "Li", , "sai.li@pennmedicine.upenn.edu", role = "aut", comment = c(ORCID = "0000-0002-6362-3593")),
-      person("Tony", "Cai", "tcai@wharton.upenn.edu", role = "ctb", comment = c(ORCID = "0000-0002-1673-6296")),
-      person("Hongzhe", "Li", "hongzhe@pennmedicine.upenn.edu", role = "ctb", comment = c(ORCID = "0000-0003-3662-3907"))
+      person("Tony", "Cai", , "tcai@wharton.upenn.edu", role = "aut", comment = c(ORCID = "0000-0002-1673-6296")),
+      person("Hongzhe", "Li", , "hongzhe@pennmedicine.upenn.edu", role = "aut", comment = c(ORCID = "0000-0003-3662-3907"))
     )
 Description: A data-driven procedure for transfer learning with robustness to non-informative auxiliary samples and efficiency in knowledge transfer. Estimation and prediction of a high-dimensional linear regression in the setting of transfer learning, using samples from the target model as well as auxiliary samples from different but possibly related regression models. When the set of "informative" auxiliary samples is known, an estimator and a predictor are proposed and their optimality is established. The optimal rates of convergence for prediction and estimation are faster than the corresponding rates without using the auxiliary samples.
 License: GPL (>= 3)
@@ -14,9 +14,12 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.1
 Suggests: 
     covr,
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
     glmnet,
     lassoshooting,
     SimDesign
+VignetteBuilder: knitr
