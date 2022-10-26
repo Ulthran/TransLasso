@@ -1,0 +1,32 @@
+---
+title: "TransLasso"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{TransLasso}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(TransLasso)
+```
+
+## Introduction
+
+
+
+## Installation
+
+
+
+## Usage
+
+Common usage examples
+
