@@ -8,6 +8,15 @@
 
 Rcode for the TransLasso algorithm.
 
-Documentation: https://ulthran.github.io/TransLasso/
+## Installation
 
-The paper, Transfer Learning for High-dimensional Linear Regression, can be found at https://arxiv.org/abs/2006.10593.
+The development version can be installed from GitHub with:
+
+```r
+# install.packages("devtools")
+devtools::install_github("Ulthran/TransLasso")
+```
+
+## Documentation
+
+See the [GitHub Pages site](https://ulthran.github.io/TransLasso/) for function documentation. The associated paper is entitled [Transfer Learning for High-dimensional Linear Regression](https://arxiv.org/abs/2006.10593) by Sai Li, T. Tony Cai, & Hongzhe Li.
