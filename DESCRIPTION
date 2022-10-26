@@ -8,6 +8,8 @@ Authors@R:
       person("Hongzhe", "Li", , "hongzhe@pennmedicine.upenn.edu", role = "aut", comment = c(ORCID = "0000-0003-3662-3907"))
     )
 Description: A data-driven procedure for transfer learning with robustness to non-informative auxiliary samples and efficiency in knowledge transfer. Estimation and prediction of a high-dimensional linear regression in the setting of transfer learning, using samples from the target model as well as auxiliary samples from different but possibly related regression models. When the set of "informative" auxiliary samples is known, an estimator and a predictor are proposed and their optimality is established. The optimal rates of convergence for prediction and estimation are faster than the corresponding rates without using the auxiliary samples.
+URL: https://ulthran.github.io/TransLasso/, https://github.com/Ulthran/TransLasso
+BugReports: ISSUESLINKONCEREPONOTFORKED
 License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
