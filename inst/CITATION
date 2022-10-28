@@ -9,5 +9,5 @@ citEntry(
   volume   = "84",
   pages    = "149-173",
   url      = "https://doi.org/10.1111/rssb.12479",
-  textVersion = "v1"
+  textVersion = "Li S, Cai TT and Li H (2022): Transfer Learning for High-dimensional Linear Regression: Prediction, Estimation, and Minimax Optimality. Journal of the Royal Statistical Society B , 84: 149-173."
 )
