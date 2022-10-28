@@ -7,7 +7,6 @@ citEntry(
   journal  = "Journal of the Royal Statistical Society B",
   year     = "2022",
   volume   = "84",
-  number   = ,
   pages    = "149-173",
   url      = "https://doi.org/10.1111/rssb.12479",
   textVersion = "v1"
