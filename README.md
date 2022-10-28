@@ -20,4 +20,4 @@ devtools::install_github("Ulthran/TransLasso")
 
 ## Documentation
 
-See the [GitHub Pages site](https://ulthran.github.io/TransLasso/) for function documentation. See vignettes for further usage information. Please cite [Transfer Learning for High-dimensional Linear Regression](https://arxiv.org/abs/2006.10593) by Sai Li, T. Tony Cai, & Hongzhe Li.
+See the [GitHub Pages site](https://ulthran.github.io/TransLasso/) for function documentation. See vignettes for further usage information. Please cite [Transfer Learning for High-dimensional Linear Regression](https://arxiv.org/abs/2006.10593) by Sai Li, T. Tony Cai, & Hongzhe Li (full citation [here](https://ulthran.github.io/TransLasso/authors.html#citation)).
