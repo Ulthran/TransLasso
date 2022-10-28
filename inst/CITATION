@@ -1,0 +1,16 @@
+citHeader("To cite TransLasso in publications use:")
+
+citEntry(
+  entry    = "Article",
+  title    = "Transfer Learning for High-dimensional Linear Regression: Prediction, Estimation, and Minimax Optimality",
+  author   = "Sai Li, T. Tony Cai, Hongzhe Li",
+  journal  = "Journal of the Royal Statistical Society B",
+  year     = "2022",
+  volume   = "84",
+  number   = ,
+  pages    = "149-173",
+  url      = "https://doi.org/10.1111/rssb.12479",
+  textVersion = paste(
+
+  )
+)
