@@ -10,7 +10,5 @@ citEntry(
   number   = ,
   pages    = "149-173",
   url      = "https://doi.org/10.1111/rssb.12479",
-  textVersion = paste(
-
-  )
+  textVersion = "v1"
 )
