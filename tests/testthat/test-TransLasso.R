@@ -50,13 +50,14 @@ prep.data <- function(p, M, n0, size.A0, l1) {
     y <- c(y, X[ind.k, ] %*% B[, k] + rnorm (n.vec[k], 0, 1))
   }
 
-  return(list(X=X, y=y, beta0=beta0, p=p, M=M, n0=n0, size.A0=size.A0, l1=l1, n.vec=n.vec))
+  return(list(X=X, y=y, beta0=beta0, p=p, M=M, n0=n0, size.A0=size.A0, l1=l1, n.vec=n.vec, A0=A0))
 }
 
 test_that("oracle translasso alogrithm works", {
   set.seed(123)
   data <- prep.data(500, 20, 150, 12, T)
   list2env(data, .GlobalEnv)
+  save(X, y, A0, n.vec, l1, file="../../data/inputs.Rdata")
 
   otl <- las.kA(X, y, A0 = 1:size.A0, n.vec = n.vec, l1=l1)
   mse.val <- mse.fun(as.numeric(otl$beta.kA), beta0)$est.err
@@ -79,7 +80,8 @@ test_that("oracle translasso alogrithm works", {
   expect_lt(max(abs(otl$beta.kA - prop.sp.re1$beta.sp)), 0.2)
   expect_lt(max(abs(otl$beta.kA - prop.sp.re2$beta.sp)), 0.2)
 
-  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, envir = .GlobalEnv)
+  save(otl, mse.val, file="../../data/oracle-outputs.Rdata")
+  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
 })
 
 test_that("translasso algorithm works", {
@@ -112,6 +114,7 @@ test_that("translasso algorithm works", {
 
   expect_lt(mse.val, 0.5)
 
-  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, envir = .GlobalEnv)
+  save(prop.re1, prop.re2, Rank.re, mse.val, file="../../data/std-outputs.Rdata")
+  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
 })
 
