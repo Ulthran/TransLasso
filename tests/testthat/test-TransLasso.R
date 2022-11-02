@@ -54,10 +54,13 @@ prep.data <- function(p, M, n0, size.A0, l1) {
 }
 
 test_that("oracle translasso alogrithm works", {
-  set.seed(123)
-  data <- prep.data(500, 20, 150, 12, T)
-  list2env(data, .GlobalEnv)
-  save(X, y, A0, n.vec, l1, file="../../data/inputs.Rdata")
+  # Generate test data
+  #set.seed(123)
+  #data <- prep.data(500, 20, 150, 12, T)
+  #list2env(data, .GlobalEnv)
+  #save.image(file="../../data/inputs.Rdata")
+  # Load pregenerated test data
+  load("../../data/inputs.Rdata")
 
   otl <- las.kA(X, y, A0 = 1:size.A0, n.vec = n.vec, l1=l1)
   mse.val <- mse.fun(as.numeric(otl$beta.kA), beta0)$est.err
@@ -80,14 +83,18 @@ test_that("oracle translasso alogrithm works", {
   expect_lt(max(abs(otl$beta.kA - prop.sp.re1$beta.sp)), 0.2)
   expect_lt(max(abs(otl$beta.kA - prop.sp.re2$beta.sp)), 0.2)
 
-  save(otl, mse.val, file="../../data/oracle-outputs.Rdata")
-  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
+  #save(otl, mse.val, file="../../data/oracle-outputs.Rdata")
+  #rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
 })
 
 test_that("translasso algorithm works", {
-  set.seed(123)
-  data <- prep.data(500, 20, 150, 12, T)
-  list2env(data, .GlobalEnv)
+  # Generate test data
+  #set.seed(123)
+  #data <- prep.data(500, 20, 150, 12, T)
+  #list2env(data, .GlobalEnv)
+  #save.image(file="../../data/inputs.Rdata")
+  # Load pregenerated test data
+  load("../../data/inputs.Rdata")
 
   prop.re1 <- Trans.lasso(X, y, n.vec, I.til = 1:50, l1 = l1)
   prop.re2 <- Trans.lasso(X, y, n.vec, I.til = 101:n.vec[1], l1=l1)
@@ -114,7 +121,7 @@ test_that("translasso algorithm works", {
 
   expect_lt(mse.val, 0.5)
 
-  save(prop.re1, prop.re2, Rank.re, mse.val, file="../../data/std-outputs.Rdata")
-  rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
+  #save(prop.re1, prop.re2, Rank.re, mse.val, file="../../data/std-outputs.Rdata")
+  #rm(X, y, beta0, p, M, n0, size.A0, l1, n.vec, A0, envir = .GlobalEnv)
 })
 
